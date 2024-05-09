@@ -1,0 +1,130 @@
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from '../../enviroments/enviroment';
+
+@Component({
+  selector: 'app-taxi',
+  templateUrl: './taxi.component.html',
+  styleUrl: './taxi.component.css'
+})
+export class TaxiComponent implements OnInit{
+  httpClient = inject(HttpClient);
+  router = inject(Router);
+
+  customerlist: {
+    id: string;
+    name: string;
+    phone: string;
+    email: string; 
+    date: string; 
+    time: string; 
+    area: string; 
+    city: string; 
+   
+  }[] = [];
+
+
+  ngOnInit(): void {
+    this.fetchCustomer();
+    this.fetchTourist();
+  }
+
+  fetchCustomer() {
+    this.httpClient.get(`${environment.baseApiUrl}/Customer`).subscribe({
+      next: (data) => {
+        this.customerlist = data as {
+          id: string;
+          name: string;
+          phone: string;
+          email: string; 
+          date: string; 
+          time: string; 
+          area: string; 
+          city: string;  
+        }[];
+      },
+      error: () => {
+        alert('There was an error!');
+      }
+    });
+  }
+
+  // create-tourist
+
+  touristlist: {
+    id: string;
+    name: string;
+    phone: string;
+    email: string; 
+    date: string; 
+    time: string; 
+    area: string; 
+    city: string; 
+  }[] = [];
+
+
+  fetchTourist() {
+    this.httpClient.get(`${environment.baseApiUrl}/Tourist`).subscribe({
+      next: (data) => {
+        this.touristlist = data as {
+          id: string;
+          name: string;
+          phone: string;
+          email: string; 
+          date: string; 
+          time: string; 
+          area: string; 
+          city: string;  
+        }[];
+      },
+      error: () => {
+        alert('There was an error!');
+      }
+    });
+  }
+
+  //delete customer
+  onDelete(id: string) {
+    if (confirm("Do you want to Delete?")) {
+      this.httpClient.delete(`${environment.baseApiUrl}/customer/${id}`).subscribe({
+        next: (data) => {
+          alert('customer has been Deleted Sucessfully');
+          this.fetchCustomer();
+        },
+        error: () => {
+          alert('There was an error!');
+        }
+      });
+    } else {
+    }
+  }
+
+    //delete tourist
+    onDelete1(id: string) {
+      if (confirm("Do you want to Delete?")) {
+        this.httpClient.delete(`${environment.baseApiUrl}/tourist/${id}`).subscribe({
+          next: (data) => {
+            alert('tourist has been Deleted Sucessfully');
+            this.fetchTourist();
+          },
+          error: () => {
+            alert('There was an error!');
+          }
+        });
+      } else {
+      }
+    }
+
+    onEdit(id:string){
+      this.router.navigate(['customer/update/'+id]);
+     
+      
+
+    }
+
+
+    onEdit1(id:string){
+      this.router.navigate(['tourist/update/'+id]);
+    }
+}

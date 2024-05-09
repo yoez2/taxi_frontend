@@ -1,0 +1,74 @@
+<div class="heading">
+    <h1>Tourist</h1>
+  </div>
+  
+  <div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+      <form *ngIf="bookingForm2" [formGroup]="bookingForm2" (ngSubmit)="onUpdate1()">
+        <div class="formbold-mb-5">
+          <label for="name" class="formbold-form-label"> Full Name </label>
+          <input type="text" formControlName="name" placeholder="Full Name" class="formbold-form-input">
+          <div *ngIf="bookingForm2.get('name')?.errors && bookingForm2.get('name')?.touched">Enter a name!!</div>
+        </div>
+  
+        <div class="formbold-mb-5">
+          <label for="phone" class="formbold-form-label"> Phone Number </label>
+          <input type="text" formControlName="phone" placeholder="Enter your phone number" class="formbold-form-input"  formControlName="phone" >
+          <div *ngIf="bookingForm2.get('phone')?.errors && bookingForm2.get('phone')?.touched">Enter a phone number!!</div>
+        </div>
+  
+        <div class="formbold-mb-5">
+          <label for="email" class="formbold-form-label"> Email Address </label>
+          <input type="email" formControlName="email" placeholder="Enter your email" class="formbold-form-input" formControlName="email">
+          <div *ngIf="bookingForm2.get('email')?.errors?.['required']">Email is required!!</div>
+          <div *ngIf="bookingForm2.get('email')?.errors?.['email']">Enter a valid email address!!</div>
+        </div>
+  
+    
+  
+        <div class="flex flex-wrap formbold--mx-3">
+          <div class="w-full sm:w-half formbold-px-3">
+            <div class="formbold-mb-5 w-full">
+              <label for="date" class="formbold-form-label"> pick up Date </label>
+              <input type="date" formControlName="date" class="formbold-form-input" formControlName="date">
+              <div *ngIf="bookingForm2.get('date')?.errors && bookingForm2.get('date')?.touched">Date is required!!</div>
+            </div>
+          </div>
+  
+          <div class="w-full sm:w-half formbold-px-3">
+            <div class="formbold-mb-5">
+              <label for="time" class="formbold-form-label"> drop off time </label>
+              <input type="time" formControlName="time" class="formbold-form-input" formControlName="time">
+              <div *ngIf="bookingForm2.get('time')?.errors && bookingForm2.get('time')?.touched">Time is required!!</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="formbold-mb-5 formbold-pt-3">
+          <label class="formbold-form-label formbold-form-label-2">
+            Address Details
+          </label>
+          <div class="flex flex-wrap formbold--mx-3">
+            <div class="w-full sm:w-half formbold-px-3">
+              <div class="formbold-mb-5">
+                <input type="text" formControlName="area" placeholder="pick up location" class="formbold-form-input" formControlName="area">
+                <div *ngIf="bookingForm2.get('area')?.errors && bookingForm2.get('area')?.touched">Area is required!!</div>
+              </div>
+            </div>
+  
+            <div class="w-full sm:w-half formbold-px-3">
+              <div class="formbold-mb-5">
+                <input type="text" formControlName="city" placeholder="drop off location" class="formbold-form-input" formControlName="city" >
+                <div *ngIf="bookingForm2.get('city')?.errors && bookingForm2.get('city')?.touched">City is required!!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div>
+          <button type="submit" class="formbold-btn" >update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

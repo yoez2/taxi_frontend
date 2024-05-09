@@ -1,0 +1,64 @@
+
+<h1 class="text-center fs-1 py-5"><b>Customer List</b></h1>
+<hr>
+<div class="container">
+    <div class="row">
+        @for (item of customerlist; track $index) {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body d-flex justify-content-between align-items-start">
+                        <h5 class="card-title mb-0">Customer Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong> name:</strong> {{ item?.name }}</li>
+                            <li class="list-group-item"><strong>Contact numner:</strong> {{ item?.phone }}</li>
+                            <li class="list-group-item"><strong>email:</strong> {{ item?.email }}</li>
+                            <li class="list-group-item"><strong>date:</strong> {{ item?.date }}</li>
+                            <li class="list-group-item"><strong>time:</strong> {{ item?.time }}</li>
+                            <li class="list-group-item"><strong>area :</strong> {{ item?.area }}</li>
+                            <li class="list-group-item"><strong>city:</strong> {{ item?.city }}</li>
+                        </ul>
+
+                    </div>
+                    <button class="btn btn-danger" (click)="onDelete(item.id)">Delete</button><br>
+                    <button class="btn btn-primary" (click)="onEdit(item.id)">Update</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<h1 class="text-center fs-1 py-5"><b>Tourist List</b></h1>
+<hr>
+<div class="container">
+    <div class="row">
+        @for (item of touristlist; track $index) {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body d-flex justify-content-between align-items-start">
+                        <h5 class="card-title mb-0">Tourist Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong> name:</strong> {{ item?.name }}</li>
+                            <li class="list-group-item"><strong>Contact numner:</strong> {{ item?.phone }}</li>
+                            <li class="list-group-item"><strong>email:</strong> {{ item?.email }}</li>
+                            <li class="list-group-item"><strong>date:</strong> {{ item?.date }}</li>
+                            <li class="list-group-item"><strong>time:</strong> {{ item?.time }}</li>
+                            <li class="list-group-item"><strong>area :</strong> {{ item?.area }}</li>
+                            <li class="list-group-item"><strong>city:</strong> {{ item?.city }}</li>
+                        </ul>
+
+                    </div>
+                    <button class="btn btn-danger" (click)="onDelete1(item.id)">Delete</button>
+                    <br>
+                    <button class="btn btn-primary" (click)="onEdit1(item.id)">Update</button>
+                   
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
