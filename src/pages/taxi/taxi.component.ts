@@ -3,9 +3,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../enviroments/enviroment';
 import { NotificationService } from '../../app/services/notification.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-taxi',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './taxi.component.html',
   styleUrl: './taxi.component.css'
 })

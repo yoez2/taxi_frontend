@@ -1,5 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -8,6 +10,8 @@ import { NotificationService } from '../../app/services/notification.service';
 
 @Component({
   selector: 'app-tourist',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './tourist.component.html',
   styleUrl: './tourist.component.css'
 })

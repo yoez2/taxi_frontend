@@ -3,9 +3,13 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../enviroments/enviroment';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-update-tourist',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './update-tourist.component.html',
   styleUrl: './update-tourist.component.css'
 })

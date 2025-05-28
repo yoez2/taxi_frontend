@@ -5,9 +5,13 @@ import { environment } from '../../enviroments/enviroment';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { NotificationService } from '../../app/services/notification.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-customer',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css'
 })
