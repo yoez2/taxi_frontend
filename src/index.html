@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="favicon.png">
   <!-- Android specific -->
   <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-  <base href="/">
+  <base href="./">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Load fonts from CDN -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -23,8 +23,18 @@
   <link href="https://cdn.jsdelivr.net/npm/@fontsource/platypi@5.0.8/400.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fontsource/platypi@5.0.8/500.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fontsource/platypi@5.0.8/600.css" rel="stylesheet">
+  <script>
+    window.onerror = function(msg, url, lineNo, columnNo, error) {
+      console.error('Error: ' + msg + '\nURL: ' + url + '\nLine: ' + lineNo + '\nColumn: ' + columnNo + '\nError object: ' + JSON.stringify(error));
+      return false;
+    };
+  </script>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <div style="text-align: center; padding: 50px;">
+      Loading...
+    </div>
+  </app-root>
 </body>
 </html>
