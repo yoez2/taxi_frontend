@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../enviroments/enviroment';
+import { NotificationService } from '../../app/services/notification.service';
 
 @Component({
   selector: 'app-taxi',
@@ -11,6 +12,7 @@ import { environment } from '../../enviroments/enviroment';
 export class TaxiComponent implements OnInit{
   httpClient = inject(HttpClient);
   router = inject(Router);
+  notificationService = inject(NotificationService);
 
   customerlist: {
     id: string;
@@ -45,7 +47,7 @@ export class TaxiComponent implements OnInit{
         }[];
       },
       error: () => {
-        alert('There was an error!');
+        this.notificationService.showNotification('There was an error!');
       }
     });
   }
@@ -79,7 +81,7 @@ export class TaxiComponent implements OnInit{
         }[];
       },
       error: () => {
-        alert('There was an error!');
+        this.notificationService.showNotification('There was an error!');
       }
     });
   }
@@ -89,11 +91,11 @@ export class TaxiComponent implements OnInit{
     if (confirm("Do you want to Delete?")) {
       this.httpClient.delete(`${environment.baseApiUrl}/customer/${id}`).subscribe({
         next: (data) => {
-          alert('customer has been Deleted Sucessfully');
+          this.notificationService.showNotification('customer has been Deleted Sucessfully');
           this.fetchCustomer();
         },
         error: () => {
-          alert('There was an error!');
+          this.notificationService.showNotification('There was an error!');
         }
       });
     } else {
@@ -105,11 +107,11 @@ export class TaxiComponent implements OnInit{
       if (confirm("Do you want to Delete?")) {
         this.httpClient.delete(`${environment.baseApiUrl}/tourist/${id}`).subscribe({
           next: (data) => {
-            alert('tourist has been Deleted Sucessfully');
+            this.notificationService.showNotification('tourist has been Deleted Sucessfully');
             this.fetchTourist();
           },
           error: () => {
-            alert('There was an error!');
+            this.notificationService.showNotification('There was an error!');
           }
         });
       } else {
