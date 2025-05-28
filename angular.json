@@ -84,9 +84,11 @@
                   "minify": true,
                   "inlineCritical": false
                 },
-                "fonts": false
+                "fonts": {
+                  "inline": false
+                }
               },
-              "sourceMap": true
+              "sourceMap": false
             },
             "development": {
               "optimization": false,
