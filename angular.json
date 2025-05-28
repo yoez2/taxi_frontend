@@ -63,12 +63,6 @@
                   "type": "anyScript",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
-                },
-                {
-                  "type": "bundle",
-                  "name": "styles",
-                  "maximumWarning": "20mb",
-                  "maximumError": "25mb"
                 }
               ],
               "outputHashing": "all",
@@ -76,6 +70,9 @@
                 "styles": {
                   "minify": true,
                   "inlineCritical": false
+                },
+                "fonts": {
+                  "inline": false
                 }
               }
             },
