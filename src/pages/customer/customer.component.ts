@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from '../../enviroments/enviroment';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-customer',
@@ -13,7 +14,10 @@ export class CustomerComponent {
   bookingForm!: FormGroup;
   formBuilder = inject(FormBuilder);
   httpClient = inject(HttpClient);
-  router = inject(Router)
+  router = inject(Router);
+
+
+  
 
   
   ngOnInit():void {
@@ -24,7 +28,9 @@ export class CustomerComponent {
       date: ['', Validators.required],
       time: ['', Validators.required],
       area: ['', Validators.required],
-      city: ['', Validators.required]
+      city: ['', Validators.required],
+
+    
     });
   }
   onSave() {

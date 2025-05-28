@@ -1,3 +1,5 @@
+/* 
+
 * {
   margin: 0;
   padding: 0;
@@ -40,6 +42,7 @@
   line-height: 1.5;
   margin-bottom: 40px;
   color: #666;
+  text-align: justify;
 }
 .cta-button {
   
@@ -72,7 +75,8 @@ img {
   height: auto;
   border-radius: 10px;
 }
-/*card*/
+
+
 .card {
   position: relative;
   display: flex;
@@ -139,23 +143,25 @@ img {
   padding: 56px 20px 20px 199px;
 }
 
-
+.para{
+  text-align: justify;
+}
 
 
 @media screen and (min-width: 769px) {
   .heading h1 {
-    font-size: 55px;
-    margin-top: 35px;
+    font-size: 50px;
+    margin-top: 30px;
   }
   .hero {
     margin: 0 auto;
   }
   .container {
     width: 90%;
-    max-width: 1200px; /* Adjust max-width as needed */
-    flex-direction: row; /* Keep the original direction for desktop */
-    padding: 0; /* Remove padding for desktop */
-    margin: 65px auto; /* Adjust margin as needed */
+    max-width: 1300px; 
+    flex-direction: row; 
+    padding: 0;
+    margin: 65px auto; 
   }
   .hero-content h2 {
     font-size: 38px;
@@ -169,7 +175,7 @@ img {
     padding: 12px 24px;
   }
   .hero-image {
-    width: 600px; /* Keep the original width for desktop */
+    width: 600px; 
   }
 }
 
@@ -194,7 +200,7 @@ img {
   }
 }
 
-/*button card*/
+
 
 .button-card{
   border-color: white;
@@ -205,3 +211,219 @@ img {
   
 }
 
+ */
+
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Arial", sans-serif;
+    }
+    
+    body {
+      overflow-x: hidden;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background-color: #f8f8f8;
+      padding: 20px 0;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      max-width: 1200px;
+      margin: 30px auto;
+      gap: 30px;
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        align-items: center;
+        margin: 50px auto;
+      }
+    }
+    
+    .hero-content {
+      flex: 1;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero-content h2 {
+      font-size: clamp(28px, 4vw, 38px);
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .hero-content p {
+      font-size: clamp( 24px, 2vw, 18px);
+      line-height: 1.6;
+      margin-bottom: 25px;
+      color: #666;
+    }
+    
+    .hero-image {
+      flex: 1;
+      animation: fadeInRight 1s ease;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Services Section */
+    .heading h1 {
+      color: #eb8500df;
+      font-size: clamp(32px, 5vw, 48px);
+      text-align: center;
+      margin: 30px 0;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 60px;
+    }
+    
+    @media (min-width: 600px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 40px;
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0;
+      }
+    }
+    
+    .service-card {
+      position: relative;
+      border-radius: 24px;
+      padding: 30px;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid #eee;
+      height: 100%;
+    }
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #eb8500df; /* Your yellow color */
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: skew(-24deg);
+      clip-path: circle(0% at 50% 50%);
+      transition: all 0.64s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 0;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+      transform: skew(0deg);
+      clip-path: circle(140.9% at 0 0);
+    }
+    
+    
+    .service-card .heading {
+      font-size: clamp(24px, 3vw, 28px);
+      margin-bottom: 15px;
+      color: #333;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card .para {
+      font-size: clamp( 24px, 1.8vw, 16px);
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .service-card .heading,
+    .service-card .para {
+     position: relative;
+     z-index: 1; 
+    }
+
+    
+     .service-card:hover .heading,
+     .service-card:hover .para {
+     color: #ffffff;
+     }
+
+    .card:hover::before {
+      opacity: 1;
+      transform: skew(0deg);
+      clip-path: circle(140.9% at 0 0);
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      /* Keep your other styles */
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* Button Styles */
+    .cta-button {
+      display: inline-block;
+      background-color: #eb8500df;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: clamp( 20px, 2vw, 18px);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .cta-button:hover {
+      background-color: #4193bcdf;
+      transform: scale(1.05);
+    }

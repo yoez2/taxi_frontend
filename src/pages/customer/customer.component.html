@@ -30,7 +30,7 @@
         <div class="w-full sm:w-half formbold-px-3">
           <div class="formbold-mb-5 w-full">
             <label for="date" class="formbold-form-label"> pick up Date </label>
-            <input type="date" formControlName="date" class="formbold-form-input" formControlName="date">
+            <input type="date"  formControlName="date" class="formbold-form-input" formControlName="date">
             <div *ngIf="bookingForm.get('date')?.errors && bookingForm.get('date')?.touched">Date is required!!</div>
           </div>
         </div>
@@ -66,7 +66,7 @@
       </div>
 
       <div>
-        <button type="submit" class="formbold-btn"  (click)="onSave()">Book now</button>
+        <button type="submit" class="formbold-btn"  (click)="onSave()" [disabled]="bookingForm.invalid">Book now</button>
       </div>
     </form>
   </div>
