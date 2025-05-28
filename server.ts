@@ -17,10 +17,24 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // Serve static files from /browser
-  server.get('*.*', express.static(browserDistFolder, {
+  // Serve static files from /browser with proper MIME types
+  server.use(express.static(browserDistFolder, {
     maxAge: '1y',
-    fallthrough: false
+    setHeaders: (res, path) => {
+      if (path.endsWith('.js')) {
+        res.setHeader('Content-Type', 'application/javascript');
+      } else if (path.endsWith('.css')) {
+        res.setHeader('Content-Type', 'text/css');
+      } else if (path.endsWith('.woff2')) {
+        res.setHeader('Content-Type', 'font/woff2');
+      } else if (path.endsWith('.woff')) {
+        res.setHeader('Content-Type', 'font/woff');
+      } else if (path.endsWith('.ttf')) {
+        res.setHeader('Content-Type', 'font/ttf');
+      } else if (path.endsWith('.eot')) {
+        res.setHeader('Content-Type', 'application/vnd.ms-fontobject');
+      }
+    }
   }));
 
   // All regular routes use the Angular engine
