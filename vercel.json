@@ -11,9 +11,6 @@
   ],
   "routes": [
     {
-      "handle": "filesystem"
-    },
-    {
       "src": "/favicon.ico",
       "dest": "/favicon.ico"
     },
@@ -26,8 +23,13 @@
       "dest": "/assets/$1"
     },
     {
+      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|svg|woff|woff2|ttf|eot))",
+      "dest": "/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/index.html",
+      "status": 200
     }
   ]
 } 
