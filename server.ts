@@ -17,11 +17,10 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get('*.*', express.static(browserDistFolder, {
-    maxAge: '1y'
+    maxAge: '1y',
+    fallthrough: false
   }));
 
   // All regular routes use the Angular engine
@@ -36,8 +35,25 @@ export function app(): express.Express {
         publicPath: browserDistFolder,
         providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
       })
-      .then((html) => res.send(html))
-      .catch((err) => next(err));
+      .then((html) => {
+        res.send(html);
+      })
+      .catch((err) => {
+        console.error('Error rendering page:', err);
+        // If there's an error, try to serve the static index.html
+        res.sendFile(join(browserDistFolder, 'index.html'), (err) => {
+          if (err) {
+            console.error('Error serving static index.html:', err);
+            next(err);
+          }
+        });
+      });
+  });
+
+  // Error handling middleware
+  server.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error('Server error:', err);
+    res.status(500).send('Internal Server Error');
   });
 
   return server;
